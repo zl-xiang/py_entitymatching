@@ -139,6 +139,7 @@ def get_features(ltable, rtable, l_attr_types, r_attr_types,
         r_attr_type = r_attr_types[ac[1]]
 
         # Generate a feature only if the attribute types are same
+        """
         if l_attr_type != r_attr_type:
             logger.info('py_entitymatching types: %s type (%s) and %s type (%s) '
                            'are different.'
@@ -151,14 +152,14 @@ def get_features(ltable, rtable, l_attr_types, r_attr_types,
             # features_2 = _get_features_for_type(r_attr_type)
             # features = set(features_1).union(features_2)
             continue
-
+        """
         # Generate features
         features = _get_features_for_type(l_attr_type)
 
         # Convert features to function objects
         fn_objs = _conv_func_objs(features, ac, tok_funcs, sim_funcs)
         # Add the function object to a feature list.
-        feature_dict_list.append(fn_objs)
+        feature_dict_list.append(fn_objs) 
 
     # Create a feature table
     feature_table = pd.DataFrame(flatten_list(feature_dict_list))
@@ -458,18 +459,20 @@ def _get_feat_lkp_tbl():
     lookup_table['STR_BT_1W_5W'] = [('jaccard', 'qgm_3', 'qgm_3'),
                                     ('cosine', 'dlm_dc0', 'dlm_dc0'),
                                     ('jaccard', 'dlm_dc0', 'dlm_dc0'),
+                                    ('jaro_winkler'),
                                     ('monge_elkan'), ('lev_dist'), ('lev_sim'),
                                     ('needleman_wunsch'),
-                                    ('smith_waterman')]  # dlm_dc0 is the concrete space tokenizer
+                                    ('smith_waterman'),('exact_match')]  # dlm_dc0 is the concrete space tokenizer
 
     # Features for type str_bt_5w_10w
     lookup_table['STR_BT_5W_10W'] = [('jaccard', 'qgm_3', 'qgm_3'),
+                                     ('jaro_winkler'),
                                      ('cosine', 'dlm_dc0', 'dlm_dc0'),
-                                     ('monge_elkan'), ('lev_dist'), ('lev_sim')]
+                                     ('monge_elkan'), ('lev_dist'), ('lev_sim'),('exact_match')]
 
     # Features for type str_gt_10w
     lookup_table['STR_GT_10W'] = [('jaccard', 'qgm_3', 'qgm_3'),
-                                  ('cosine', 'dlm_dc0', 'dlm_dc0')]
+                                  ('cosine', 'dlm_dc0', 'dlm_dc0'),('exact_match')]
 
     # Features for NUMERIC type
     lookup_table['NUM'] = [('exact_match'), ('abs_norm'), ('lev_dist'),

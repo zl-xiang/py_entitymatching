@@ -334,6 +334,8 @@ class BooleanRuleMatcher(RuleMatcher):
         return self.rules[rule_name]
 
     def apply_rules(self, ltuple, rtuple):
+        #print(ltuple, '-----')
+        #print(rtuple, '+++++')
         for fn in self.rules.values():
             res = fn(ltuple, rtuple)
             if res is True:

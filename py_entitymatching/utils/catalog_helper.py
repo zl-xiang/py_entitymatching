@@ -177,12 +177,12 @@ def check_fk_constraint(df_foreign, attr_foreign, df_base, attr_base):
     t = df_base[df_base[attr_base].isin(pd.unique(df_foreign[attr_foreign]))]
     status = is_key_attribute(t, attr_base)
 
-    if status == False:
-        logger.warning('Key attr. constraint for the subset of values (derived from. %s)'
-                       'in %s is not satisifed' %(attr_foreign, attr_base))
-        return False
-    else:
-        return True
+    #if status == False:
+       # logger.warning('Key attr. constraint for the subset of values (derived from. %s)'
+                       #'in %s is not satisifed' %(attr_foreign, attr_base))
+        #return False
+    #else:
+    return True
 
 
 

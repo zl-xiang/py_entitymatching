@@ -40,8 +40,8 @@ from py_entitymatching.blocker.rule_based_blocker import RuleBasedBlocker
 from py_entitymatching.blocker.sn_blocker import SortedNeighborhoodBlocker
 
 # # blocker debugger
-from py_entitymatching.debugblocker.debugblocker import debug_blocker
-from py_entitymatching.debugblocker.backup_debugblocker import backup_debug_blocker
+#from py_entitymatching.debugblocker.debugblocker import debug_blocker
+#from py_entitymatching.debugblocker.backup_debugblocker import backup_debug_blocker
 
 # # blocker combiner
 from py_entitymatching.blockercombiner.blockercombiner import combine_blocker_outputs_via_union

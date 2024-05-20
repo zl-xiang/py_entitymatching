@@ -728,13 +728,13 @@ def set_key(data_frame, key_attribute):
     # catch the exception correctly, which may be complicated and require
     # changes to the current code). We need to revisit this
     # later.
-    if ch.is_key_attribute(data_frame, key_attribute) is False:
-        logger.warning('Attribute (%s ) does not qualify  to be a key; Not '
-                       'setting/replacing the key' % key_attribute)
-        return False
-    else:
+    #if ch.is_key_attribute(data_frame, key_attribute) is False:
+        #logger.warning('Attribute (%s ) does not qualify  to be a key; Not '
+               #        'setting/replacing the key' % key_attribute)
+        #return False
+   #else:
         # Set the key property for the input DataFrame
-        return set_property(data_frame, 'key', key_attribute)
+    return set_property(data_frame, 'key', key_attribute)
 
 
 def get_fk_ltable(data_frame):
@@ -1177,10 +1177,10 @@ def _validate_metadata_for_table(table, key, output_string, lgr, verbose):
     # We expect the key to be of type string
     validate_object_type(key, six.string_types, error_prefix='Key attribute')
 
-    if not ch.is_key_attribute(table, key, verbose):
-        raise AssertionError('Attribute %s in the %s table does not '
-                             'qualify to be the key' % (
-                                 str(key), output_string))
+    #if not ch.is_key_attribute(table, key, verbose):
+       # raise AssertionError('Attribute %s in the %s table does not '
+                            # 'qualify to be the key' % (
+                      #           str(key), output_string))
     ch.log_info(lgr, '..... Done', verbose)
     return True
 

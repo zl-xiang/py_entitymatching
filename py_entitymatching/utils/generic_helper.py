@@ -224,6 +224,7 @@ def parse_conjunct(conjunct, feature_table):
     vals3 = vals2.split()
     operator = vals3[0].strip()
     threshold = vals3[1].strip()
+    
     ft_df = feature_table.set_index('feature_name')
 
     return (ft_df.loc[feature_name]['is_auto_generated'],
